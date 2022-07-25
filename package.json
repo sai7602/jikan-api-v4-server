@@ -1,0 +1,33 @@
+{
+	"name": "jikan-api-v4-server",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"apollo-datasource-rest": "^3.6.1",
+		"apollo-server": "^3.10.0",
+		"graphql": "^16.5.0",
+		"nodemon": "^2.0.19"
+	},
+	"scripts": {
+		"start": "nodemon src/index",
+		"dev": "nodemon src/index"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}
