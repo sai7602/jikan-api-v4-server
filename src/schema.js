@@ -2,6 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
 	type Query {
+		allAnime(query: String): [AllAnime]
 		breeds(attachBreed: Int = 0, page: Int = 1, limit: Int = 20): [Breed!]!
 		searchBreeds(query: String): [Breed!]!
 		images(page: Int = 1, limit: Int = 20, order: Order = RANDOM): [Image!]!
@@ -11,11 +12,28 @@ const typeDefs = gql`
 	type Mutation {
 		vote(imageId: ID!, type: VoteType!): Vote!
 	}
+
+	type AllAnime {
+		allAnime: [Anime]
+		pagination: Pagination
+	}
+	type Pagination {
+		last_visible_page: Int!
+		has_next_page: Boolean
+		items: Item
+	}
+
+	type Item {
+		count: Int
+		total: Int
+		per_page: Int
+	}
 	type PersonFullById {
 		"Biography"
 		about: String
 		"Array of Anime"
 		anime: [AnimeOrMangaByPerson!]!
+		"Array of Manga"
 		manga: [AnimeOrMangaByPerson!]!
 	}
 	type AnimeOrMangaByPerson {
