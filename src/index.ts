@@ -1,6 +1,5 @@
-import { ApolloServer, gql, AuthenticationError } from 'apollo-server';
-const { readFileSync } = require('fs');
-// import { schema as typeDefs } from './schema';
+import { ApolloServer, gql } from 'apollo-server';
+import { readFileSync } from 'fs';
 import { resolvers } from './resolvers';
 const typeDefs = gql(readFileSync('./schema.graphql', { encoding: 'utf-8' }));
 import { MainAPI } from './datasources/MainAPI';
