@@ -1,0 +1,195 @@
+type Query {
+	animeSearch: AllAnime
+	animeStreaming: [StreamingData]
+}
+
+type AllAnime {
+	pagination: Pagination
+	data: [Anime]
+}
+type Pagination {
+	last_visible_page: Int!
+	has_next_page: Boolean
+	items: Item
+}
+type Anime {
+	"integer MyAnimeList ID"
+	mal_id: ID!
+	"MyAnimeList URL"
+	url: String!
+	"Anime Images"
+	images: Images!
+	"Youtube Details"
+	trailer: Trailer!
+	approved: Boolean
+	"Title"
+	title: String!
+	"English Title"
+	title_english: String
+	"Japanese Title"
+	title_japanese: String
+	"All titles"
+	titles: [String]
+	"Other Titles"
+	title_synonyms: [String]!
+	"Anime Type"
+	type: String
+	"Original Material/Source adapted from"
+	source: String
+	"Episode count"
+	episodes: Int
+	"Airing status"
+	status: String
+	"Airing boolean"
+	airing: Boolean
+	"Date range"
+	aired: Aired!
+	"Parsed raw duration"
+	duration: String
+	"Anime audience rating"
+	rating: String
+	"Score"
+	score: Float
+	"Number of users"
+	scored_by: Int
+	"Ranking"
+	rank: Int
+	"Popularity"
+	popularity: Int
+	"Number of users who have added this entry to their list"
+	members: Int
+	"Number of users who have favorited this entry"
+	favorites: Int
+	"Synopsis"
+	synopsis: String
+	"Background"
+	background: String
+	"Season"
+	season: String
+	"Year"
+	year: Int
+	producers: [DataSet!]!
+	licensors: [DataSet!]!
+	studios: [DataSet!]!
+	genres: [DataSet!]!
+	explicit_genres: [DataSet!]!
+	themes: [DataSet!]!
+	demographics: [DataSet!]!
+}
+
+type Item {
+	count: Int
+	total: Int
+	per_page: Int
+}
+
+type Trailer {
+	"YouTube ID"
+	youtube_id: String
+	"YouTube URL"
+	url: String
+	"Parsed Embed URL"
+	embed_url: String
+}
+type Aired {
+	"Date ISO8601"
+	from: String
+	"Date ISO8601"
+	to: String
+	"Date Prop"
+	prop: Prop!
+}
+type Prop {
+	"Date Prop From"
+	from: Date!
+	"Date Prop To"
+	to: Date!
+	"Raw parsed string"
+	string: String
+}
+type Date {
+	"Day"
+	day: Int
+	"Month"
+	month: Int
+	"Year"
+	year: Int
+}
+type DataSet {
+	"MyAnimeList ID"
+	mal_id: Int
+	"Type of resource"
+	type: String
+	"Resource Name/Title"
+	name: String
+	"MyAnimeList URL"
+	url: String
+}
+
+type PersonFullById {
+	"Biography"
+	about: String
+	"Array of Anime"
+	anime: [AnimeOrMangaByPerson!]!
+	"Array of Manga"
+	manga: [AnimeOrMangaByPerson!]!
+}
+type AnimeOrMangaByPerson {
+	"Person's position"
+	position: String!
+	anime: Anime!
+}
+
+enum AnimeType {
+	TV
+	OVA
+	MOVIE
+	SPECIAL
+	ONA
+	MUSIC
+}
+
+enum AiringStatus {
+	AIRING
+	COMPLETE
+	UPCOMING
+}
+type Images {
+	"Available images in JPG"
+	jpg: Image!
+	"Available images in WEBP"
+	webp: Image!
+}
+type Image {
+	"Image URL JPG, WEBP"
+	image_url: String
+	"Small Image URL JPG, WEBP"
+	small_image_url: String
+	"Large Image URL JPG, WEBP"
+	large_image_url: String
+}
+type Genres {
+	"integer MyAnimeList ID"
+	mal_id: ID!
+	"Genre Name"
+	name: String!
+	"MyAnimeList URL"
+	url: String!
+	"Genre's entry count"
+	count: Int!
+}
+
+type Magazines {
+	"integer MyAnimeList ID"
+	mal_id: ID!
+	"Magazine Name"
+	name: String!
+	"MyAnimeList URL"
+	url: String!
+	"Magazine's manga count"
+	count: Int!
+}
+type StreamingData {
+	name: String
+	url: String
+}

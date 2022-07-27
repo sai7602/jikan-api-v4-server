@@ -9,8 +9,11 @@
 		"nodemon": "^2.0.19"
 	},
 	"scripts": {
-		"start": "nodemon src/index",
-		"dev": "nodemon src/index"
+		"start": "concurrently \"nodemon src/index.ts\" \"npm run codegen\" ",
+		"dev": "ts-node-dev  --no-notify --exit-child src/index.ts ",
+		"generate": "ts-node --transpile-only src/schema.ts",
+		"codegen": "graphql-codegen --config codegen.yml",
+		"test": "graphql-codegen --config codegen.yml"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -29,5 +32,16 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "2.10.0",
+		"@graphql-codegen/introspection": "2.2.0",
+		"@graphql-codegen/typescript": "2.7.2",
+		"@graphql-codegen/typescript-document-nodes": "2.3.2",
+		"@graphql-codegen/typescript-mongodb": "2.4.2",
+		"@graphql-codegen/typescript-operations": "^2.5.2",
+		"@graphql-codegen/typescript-resolvers": "2.7.2",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^4.7.4"
 	}
 }
