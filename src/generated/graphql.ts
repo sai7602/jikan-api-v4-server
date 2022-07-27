@@ -14,11 +14,6 @@ export type Scalars = {
   Float: number;
 };
 
-export type AdditionalEntityFields = {
-  path?: InputMaybe<Scalars['String']>;
-  type?: InputMaybe<Scalars['String']>;
-};
-
 export type Aired = {
   __typename?: 'Aired';
   /** Date ISO8601 */
@@ -312,23 +307,21 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  AdditionalEntityFields: AdditionalEntityFields;
-  String: ResolverTypeWrapper<Scalars['String']>;
   Aired: ResolverTypeWrapper<Aired>;
   AiringStatus: AiringStatus;
   AllAnime: ResolverTypeWrapper<AllAnime>;
   Anime: ResolverTypeWrapper<Anime>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
-  Float: ResolverTypeWrapper<Scalars['Float']>;
   AnimeOrMangaByPerson: ResolverTypeWrapper<AnimeOrMangaByPerson>;
   AnimeType: AnimeType;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   DataSet: ResolverTypeWrapper<DataSet>;
   Date: ResolverTypeWrapper<Date>;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
   Genres: ResolverTypeWrapper<Genres>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
   Image: ResolverTypeWrapper<Image>;
   Images: ResolverTypeWrapper<Images>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
   Item: ResolverTypeWrapper<Item>;
   Magazines: ResolverTypeWrapper<Magazines>;
   Pagination: ResolverTypeWrapper<Pagination>;
@@ -336,26 +329,25 @@ export type ResolversTypes = {
   Prop: ResolverTypeWrapper<Prop>;
   Query: ResolverTypeWrapper<{}>;
   StreamingData: ResolverTypeWrapper<StreamingData>;
+  String: ResolverTypeWrapper<Scalars['String']>;
   Trailer: ResolverTypeWrapper<Trailer>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  AdditionalEntityFields: AdditionalEntityFields;
-  String: Scalars['String'];
   Aired: Aired;
   AllAnime: AllAnime;
   Anime: Anime;
-  Boolean: Scalars['Boolean'];
-  Int: Scalars['Int'];
-  ID: Scalars['ID'];
-  Float: Scalars['Float'];
   AnimeOrMangaByPerson: AnimeOrMangaByPerson;
+  Boolean: Scalars['Boolean'];
   DataSet: DataSet;
   Date: Date;
+  Float: Scalars['Float'];
   Genres: Genres;
+  ID: Scalars['ID'];
   Image: Image;
   Images: Images;
+  Int: Scalars['Int'];
   Item: Item;
   Magazines: Magazines;
   Pagination: Pagination;
@@ -363,55 +355,9 @@ export type ResolversParentTypes = {
   Prop: Prop;
   Query: {};
   StreamingData: StreamingData;
+  String: Scalars['String'];
   Trailer: Trailer;
 };
-
-export type UnionDirectiveArgs = {
-  discriminatorField?: Maybe<Scalars['String']>;
-  additionalFields?: Maybe<Array<Maybe<AdditionalEntityFields>>>;
-};
-
-export type UnionDirectiveResolver<Result, Parent, ContextType = any, Args = UnionDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type AbstractEntityDirectiveArgs = {
-  discriminatorField: Scalars['String'];
-  additionalFields?: Maybe<Array<Maybe<AdditionalEntityFields>>>;
-};
-
-export type AbstractEntityDirectiveResolver<Result, Parent, ContextType = any, Args = AbstractEntityDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type EntityDirectiveArgs = {
-  embedded?: Maybe<Scalars['Boolean']>;
-  additionalFields?: Maybe<Array<Maybe<AdditionalEntityFields>>>;
-};
-
-export type EntityDirectiveResolver<Result, Parent, ContextType = any, Args = EntityDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type ColumnDirectiveArgs = {
-  overrideType?: Maybe<Scalars['String']>;
-};
-
-export type ColumnDirectiveResolver<Result, Parent, ContextType = any, Args = ColumnDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type IdDirectiveArgs = { };
-
-export type IdDirectiveResolver<Result, Parent, ContextType = any, Args = IdDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type LinkDirectiveArgs = {
-  overrideType?: Maybe<Scalars['String']>;
-};
-
-export type LinkDirectiveResolver<Result, Parent, ContextType = any, Args = LinkDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type EmbeddedDirectiveArgs = { };
-
-export type EmbeddedDirectiveResolver<Result, Parent, ContextType = any, Args = EmbeddedDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type MapDirectiveArgs = {
-  path: Scalars['String'];
-};
-
-export type MapDirectiveResolver<Result, Parent, ContextType = any, Args = MapDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type AiredResolvers<ContextType = any, ParentType extends ResolversParentTypes['Aired'] = ResolversParentTypes['Aired']> = {
   from?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -581,15 +527,3 @@ export type Resolvers<ContextType = any> = {
   Trailer?: TrailerResolvers<ContextType>;
 };
 
-export type DirectiveResolvers<ContextType = any> = {
-  union?: UnionDirectiveResolver<any, any, ContextType>;
-  abstractEntity?: AbstractEntityDirectiveResolver<any, any, ContextType>;
-  entity?: EntityDirectiveResolver<any, any, ContextType>;
-  column?: ColumnDirectiveResolver<any, any, ContextType>;
-  id?: IdDirectiveResolver<any, any, ContextType>;
-  link?: LinkDirectiveResolver<any, any, ContextType>;
-  embedded?: EmbeddedDirectiveResolver<any, any, ContextType>;
-  map?: MapDirectiveResolver<any, any, ContextType>;
-};
-
-import { ObjectId } from 'mongodb';
