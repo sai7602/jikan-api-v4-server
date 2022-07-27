@@ -9,7 +9,7 @@
 		"nodemon": "^2.0.19"
 	},
 	"scripts": {
-		"start": "node src/server.js",
+		"start": "node src/index.js",
 		"postinstall": "tsc",
 		"starter": "concurrently \"nodemon src/index.ts\" \"npm run codegen\" ",
 		"dev": "ts-node-dev  --no-notify --exit-child src/index.ts ",
