@@ -1,6 +1,6 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 
-export class MainAPI extends RESTDataSource {
+export default class MainAPI extends RESTDataSource {
 	constructor() {
 		super();
 		this.baseURL = 'https://api.jikan.moe/v4';
@@ -10,4 +10,3 @@ export class MainAPI extends RESTDataSource {
 		return this.get('/anime');
 	}
 }
-

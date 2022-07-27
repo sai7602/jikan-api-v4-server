@@ -2,7 +2,7 @@ import { ApolloServer, gql } from 'apollo-server';
 import { readFileSync } from 'fs';
 import { resolvers } from './resolvers';
 const typeDefs = gql(readFileSync('./schema.graphql', { encoding: 'utf-8' }));
-import { MainAPI } from './datasources/MainAPI';
+import MainAPI from '../src/datasources/MainApi';
 
 async function startApolloServer(typeDefs: any, resolvers: any) {
 	const server = new ApolloServer({
